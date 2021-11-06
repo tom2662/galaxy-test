@@ -1,21 +1,20 @@
 package service
 
 import (
+	"galaxy/api/repository"
 	"galaxy/models"
-	"server/api/repository"
-	"server/models"
 )
 
 type ConverterService struct {
 	repository repository.ConverterRepository
 }
 
-func NewPostService(r repository.ConverterRepository) ConverterService {
+func NewConverterService(r repository.ConverterRepository) ConverterService {
 	return ConverterService{
 		repository: r,
 	}
 }
 
-func (p ConverterService) Find(converter models.Converter) (models.Converter, error) {
-	return p.repository.Find(converter)
+func (p ConverterService) ConvertRoman(converter models.Converter) (int, error) {
+	return p.repository.ConvertRoman(converter)
 }

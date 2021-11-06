@@ -1,6 +1,12 @@
 package main
 
-import "galaxy/repository"
+import (
+	"galaxy/api/controller"
+	"galaxy/api/repository"
+	"galaxy/api/routes"
+	"galaxy/api/service"
+	"galaxy/base"
+)
 
 func init() {
 	base.LoadEnv()
@@ -17,5 +23,5 @@ func main() {
 	converterRoute := routes.NewConverterRoute(converterController, router)
 	converterRoute.Setup()
 
-	router.Run(":8000") //running application, Default port is 8080
+	router.Gin.Run(":8000")
 }

@@ -1,8 +1,8 @@
 package routes
 
 import (
-	"server/api/controller"
-	"server/infrastructure"
+	"galaxy/api/controller"
+	"galaxy/base"
 )
 
 type ConverterRoute struct {
@@ -12,7 +12,7 @@ type ConverterRoute struct {
 
 func NewConverterRoute(
 	controller controller.ConverterController,
-	handler infrastructure.GinRouter,
+	handler base.GinRouter,
 
 ) ConverterRoute {
 	return ConverterRoute{
@@ -22,8 +22,8 @@ func NewConverterRoute(
 }
 
 func (p ConverterRoute) Setup() {
-	post := p.Handler.Gin.Group("/converter")
+	converter := p.Handler.Gin.Group("/converter")
 	{
-		converter.POST("/", p.Controller.ConvertNum)
+		converter.POST("/", p.Controller.ConvertRoman)
 	}
 }
